@@ -12,7 +12,8 @@
 
 
   <buildtool_depend>catkin</buildtool_depend>
-  <run_depend>flatland</run_depend>
+  <run_depend>flatland_server</run_depend>
+  <run_depend>flatland_plugins</run_depend>
   <run_depend>navigation</run_depend>
   <run_depend>turtlebot_bringup</run_depend>
   <run_depend>turtlebot_navigation</run_depend>
