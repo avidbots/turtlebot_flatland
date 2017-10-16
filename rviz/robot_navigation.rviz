@@ -426,6 +426,15 @@ Visualization Manager:
         "": true
       Queue Size: 100
       Value: true
+    - Class: rviz/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: true
+      Name: InteractiveMarkers
+      Show Axes: false
+      Show Descriptions: true
+      Show Visual Aids: false
+      Update Topic: /interactive_model_markers/update
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -455,7 +464,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Scale: 99.5992355
+      Scale: 66.2019272
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz)
       X: 7.14787292
