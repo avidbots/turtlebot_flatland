@@ -21,3 +21,19 @@ find_package(PkgConfig REQUIRED)
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
+
+install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+)
+
+install(DIRECTORY maps
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/maps
+)
+
+install(DIRECTORY robot
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/robot
+)
+
+install(DIRECTORY rviz
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/rviz
+)

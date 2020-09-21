@@ -30,8 +30,7 @@
   <arg name="update_rate" default="100.0"/>
   <arg name="step_size" default="0.01"/>
   <arg name="viz_pub_rate" default="30.0"/>
-  <arg name="show_viz" default="true"/>  
-  <arg name="use_rviz" default="false"/>  
+  <arg name="show_viz" default="true"/>
 
   <env name="ROSCONSOLE_FORMAT" value="[${severity} ${time} ${logger}]: ${message}" />
 
@@ -99,6 +98,8 @@
   </include>
 
   <!--  **************** Visualisation ****************  -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_flatland)/rviz/robot_navigation.rviz"/>
+  <group if="$(arg show_viz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_flatland)/rviz/robot_navigation.rviz"/>
+  </group>
 
 </launch>
