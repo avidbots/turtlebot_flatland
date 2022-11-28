@@ -19,4 +19,6 @@
   <run_depend>turtlebot_navigation</run_depend>
   <run_depend>yocs_virtual_sensor</run_depend>
   <run_depend>yocs_velocity_smoother</run_depend>
+
+  <export><build_type>ament_cmake</build_type></export>
 </package>
