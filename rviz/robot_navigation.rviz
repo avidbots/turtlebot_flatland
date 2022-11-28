@@ -29,10 +29,12 @@ Panels:
     Name: Time
     SyncMode: 0
     SyncSource: LaserScan (kinect)
+  - Class: nav2_rviz_plugins/Navigation 2
+    Name: Navigation 2
 Visualization Manager:
   Class: ""
   Displays:
-    - Alpha: 0.5
+    - Alpha: 0.1
       Cell Size: 1
       Class: rviz_default_plugins/Grid
       Color: 224; 224; 224
@@ -128,7 +130,7 @@ Visualization Manager:
       Class: rviz_default_plugins/Map
       Color Scheme: map
       Draw Behind: false
-      Enabled: false
+      Enabled: true
       Name: Map
       Topic: /map
       Unreliable: false
