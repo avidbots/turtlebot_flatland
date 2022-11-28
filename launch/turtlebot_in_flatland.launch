@@ -64,19 +64,19 @@
 <!--   </node> -->
 
   <!-- ****** Maps ***** -->
-  <node name="map_server" pkg="map_server" exec="map_server" args="$(find-pkg-share turtlebot_flatland)/maps/hospital_section.yaml">
+  <node name="map_server" pkg="nav2_map_server" exec="map_server" args="$(find-pkg-share turtlebot_flatland)/maps/hospital_section.yaml">
    <param name="frame_id" value="$(var global_frame_id)"/>
   </node>
 
   <!--  ************** Navigation  ***************  -->
 
-  <include file="$(find-pkg-share turtlebot_navigation)/launch/includes/move_base.launch.xml">
-   <arg name="odom_topic" value="$(var odom_topic)"/>
-   <arg name="laser_topic" value="$(var laser_topic)"/>
-   <arg name="odom_frame_id"   value="$(var odom_frame_id)"/>
-   <arg name="base_frame_id"   value="$(var base_frame_id)"/>
-   <arg name="global_frame_id" value="$(var global_frame_id)"/>
-  </include>
+  <!-- <include file="$(find-pkg-share turtlebot3_navigation2)/launch/includes/move_base.launch.xml"> -->
+  <!--  <arg name="odom_topic" value="$(var odom_topic)"/> -->
+  <!--  <arg name="laser_topic" value="$(var laser_topic)"/> -->
+  <!--  <arg name="odom_frame_id"   value="$(var odom_frame_id)"/> -->
+  <!--  <arg name="base_frame_id"   value="$(var base_frame_id)"/> -->
+  <!--  <arg name="global_frame_id" value="$(var global_frame_id)"/> -->
+  <!-- </include> -->
 
  <!-- ***************** Manually setting some parameters ************************* -->
     <arg name="move_base/local_costmap/obstacle_layer/scan/min_obstacle_height" default="$(var min_obstacle_height)"/>
@@ -86,20 +86,20 @@
 
 
   <!--  ************** AMCL ************** -->
-  <include file="$(find-pkg-share turtlebot_navigation)/launch/includes/amcl/amcl.launch.xml">
-    <arg name="scan_topic" value="$(var laser_topic)"/>
-    <arg name="use_map_topic" value="true"/>
-    <arg name="odom_frame_id" value="$(var odom_frame_id)"/>
-    <arg name="base_frame_id" value="$(var base_frame_id)"/>
-    <arg name="global_frame_id" value="$(var global_frame_id)"/>
-    <arg name="initial_pose_x" value="$(var initial_pose_x)"/>
-    <arg name="initial_pose_y" value="$(var initial_pose_y)"/>
-    <arg name="initial_pose_a" value="$(var initial_pose_a)"/>
-  </include>
+  <!-- <include file="$(find-pkg-share turtlebot3_navigation2)/launch/includes/amcl/amcl.launch.xml"> -->
+  <!--   <arg name="scan_topic" value="$(var laser_topic)"/> -->
+  <!--   <arg name="use_map_topic" value="true"/> -->
+  <!--   <arg name="odom_frame_id" value="$(var odom_frame_id)"/> -->
+  <!--   <arg name="base_frame_id" value="$(var base_frame_id)"/> -->
+  <!--   <arg name="global_frame_id" value="$(var global_frame_id)"/> -->
+  <!--   <arg name="initial_pose_x" value="$(var initial_pose_x)"/> -->
+  <!--   <arg name="initial_pose_y" value="$(var initial_pose_y)"/> -->
+  <!--   <arg name="initial_pose_a" value="$(var initial_pose_a)"/> -->
+  <!-- </include> -->
 
   <!--  **************** Visualisation ****************  -->
   <group if="$(var show_viz)">
-    <node name="rviz" pkg="rviz" exec="rviz" args="-d $(find-pkg-share turtlebot_flatland)/rviz/robot_navigation.rviz"/>
+    <node name="rviz" pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share turtlebot_flatland)/rviz/robot_navigation.rviz"/>
   </group>
 
 </launch>
