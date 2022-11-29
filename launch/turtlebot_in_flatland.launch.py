@@ -7,6 +7,7 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
+    #pkg_share = get_package_share_directory("turtlebot_flatland")
     pkg_share = FindPackageShare("turtlebot_flatland")
 
     global_frame_id = LaunchConfiguration("global_frame_id")
@@ -18,6 +19,7 @@ def generate_launch_description():
     step_size = LaunchConfiguration("step_size")
     show_viz = LaunchConfiguration("show_viz")
     viz_pub_rate = LaunchConfiguration("viz_pub_rate")
+    use_sim_time = LaunchConfiguration("use_sim_time")
 
     ld = LaunchDescription(
         [
@@ -44,6 +46,7 @@ def generate_launch_description():
             DeclareLaunchArgument(name="step_size", default_value="0.01"),
             DeclareLaunchArgument(name="show_viz", default_value="true"),
             DeclareLaunchArgument(name="viz_pub_rate", default_value="30.0"),
+            DeclareLaunchArgument(name="use_sim_time", default_value="true"),
 
             SetEnvironmentVariable(name="ROSCONSOLE_FORMAT", value="[${severity} ${time} ${logger}]: ${message}"),
 
@@ -60,7 +63,7 @@ def generate_launch_description():
                     {"step_size": step_size},
                     {"show_viz": show_viz},
                     {"viz_pub_rate": viz_pub_rate},
-                    {"use_sim_time": True},
+                    {"use_sim_time": use_sim_time},
                 ],
             ),
 
@@ -116,10 +119,8 @@ def generate_launch_description():
                 name="rviz",
                 package="rviz2",
                 executable="rviz2",
-                arguments=[
-                    "-d",
-                    PathJoinSubstitution([pkg_share, "rviz/robot_navigation.rviz"])
-                ],
+                arguments=["-d", PathJoinSubstitution([pkg_share, "rviz/robot_navigation.rviz"])],
+                parameters=[{"use_sim_time": use_sim_time}],
                 condition=conditions.IfCondition(show_viz),
             ),
         ]
