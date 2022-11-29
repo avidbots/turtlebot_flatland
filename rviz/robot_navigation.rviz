@@ -360,7 +360,8 @@ Visualization Manager:
       Value: false
     - Class: rviz_default_plugins/MarkerArray
       Enabled: false
-      Marker Topic: /move_base/EBandPlannerROS/eband_visualization_array
+      Topic:
+        Value: /move_base/EBandPlannerROS/eband_visualization_array
       Name: EBand boubles
       Namespaces:
         {}
@@ -368,7 +369,8 @@ Visualization Manager:
       Value: false
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/layer/2d
+      Topic:
+        Value: /layers/l_2d
       Name: World
       Namespaces:
         "": true
@@ -376,7 +378,8 @@ Visualization Manager:
       Value: true
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/model/turtlebot0
+      Topic:
+        Value: /models/m_turtlebot0
       Name: Turtlebot
       Namespaces:
         "": true
@@ -414,16 +417,18 @@ Visualization Manager:
       Value: true
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/model/table0
-      Name: MarkerArray
+      Topic:
+        Value: /models/m_table0
+      Name: Table
       Namespaces:
         "": true
       Queue Size: 100
       Value: true
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/model/door0
-      Name: MarkerArray
+      Topic:
+        Value: /models/m_door0
+      Name: Door
       Namespaces:
         "": true
       Queue Size: 100
@@ -431,11 +436,11 @@ Visualization Manager:
     - Class: rviz_default_plugins/InteractiveMarkers
       Enable Transparency: true
       Enabled: true
+      Interactive Markers Namespace: /interactive_model_markers
       Name: InteractiveMarkers
       Show Axes: false
       Show Descriptions: true
       Show Visual Aids: false
-      Update Topic: /interactive_model_markers/update
       Value: true
   Enabled: true
   Global Options:
