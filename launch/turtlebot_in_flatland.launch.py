@@ -14,6 +14,10 @@ def generate_launch_description():
     min_obstacle_height = LaunchConfiguration("min_obstacle_height")
     max_obstacle_height = LaunchConfiguration("max_obstacle_height")
 
+    initial_pose_x = LaunchConfiguration("initial_pose_x")
+    initial_pose_y = LaunchConfiguration("initial_pose_y")
+    initial_pose_a = LaunchConfiguration("initial_pose_a")
+
     world_path = LaunchConfiguration("world_path")
     update_rate = LaunchConfiguration("update_rate")
     step_size = LaunchConfiguration("step_size")
@@ -75,7 +79,9 @@ def generate_launch_description():
                     "call ",
                     "/spawn_model ",
                     "flatland_msgs/srv/SpawnModel ",
-                    "\"{yaml_path: '", PathJoinSubstitution([pkg_share, 'robot/turtlebot.model.yaml']), "', name: 'turtlebot0', ns: '', pose: {x: 3.0, y: 7.0, theta: 0.0}}\"",
+                    "\"{yaml_path: '", PathJoinSubstitution([pkg_share, 'robot/turtlebot.model.yaml']),
+                    "', name: 'turtlebot0', ns: '', pose: ",
+                    "{x: ", initial_pose_x, ", y: ", initial_pose_y, ", theta: ", initial_pose_a, "}}\"",
                 ]],
                 shell=True,
             ),
