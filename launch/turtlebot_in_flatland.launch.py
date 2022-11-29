@@ -97,6 +97,12 @@ def generate_launch_description():
                     {'node_names': ["map_server"]},
                 ],
             ),
+            Node(
+                name="tf",
+                package="tf2_ros",
+                executable="static_transform_publisher",
+                arguments=["0", "0", "0", "0", "0", "0", "map", "odom"],
+            ),
 
             # ***************** Manually setting some parameters *************************
             DeclareLaunchArgument(name="move_base/local_costmap/obstacle_layer/scan/min_obstacle_height", default_value=min_obstacle_height),
