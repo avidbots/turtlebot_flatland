@@ -82,15 +82,16 @@ def generate_launch_description():
                 name="map_server",
                 package="nav2_map_server",
                 executable="map_server",
+                output='screen',
                 parameters=[
                     {"yaml_filename": PathJoinSubstitution([pkg_share, "maps/hospital_section.yaml"])},
                     {"frame_id": global_frame_id},
                 ],
             ),
             Node(
+                name='lifecycle_manager_navigation',
                 package='nav2_lifecycle_manager',
                 executable='lifecycle_manager',
-                name='lifecycle_manager_navigation',
                 output='screen',
                 parameters=[
                     {'autostart': False},
