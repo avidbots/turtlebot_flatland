@@ -7,6 +7,8 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
+    pkg_share = FindPackageShare("turtlebot_flatland")
+
     global_frame_id = LaunchConfiguration("global_frame_id")
     min_obstacle_height = LaunchConfiguration("min_obstacle_height")
     max_obstacle_height = LaunchConfiguration("max_obstacle_height")
@@ -36,12 +38,7 @@ def generate_launch_description():
             #   roslaunch flatland_Server server.launch world_path:="/some/world.yaml" initial_rate:="30.0"
             DeclareLaunchArgument(
                 name="world_path",
-                default_value=PathJoinSubstitution(
-                    [
-                        FindPackageShare("turtlebot_flatland"),
-                        "maps/hospital_section.world.yaml",
-                    ]
-                ),
+                default_value=PathJoinSubstitution([pkg_share, "maps/hospital_section.world.yaml"]),
             ),
             DeclareLaunchArgument(name="update_rate", default_value="100.0"),
             DeclareLaunchArgument(name="step_size", default_value="0.01"),
@@ -68,15 +65,17 @@ def generate_launch_description():
             ),
 
             # ***************** Robot Model *****************
-            #ExecuteProcess(
-            #    cmd=[[
-            #        FindExecutable(name='ros2'),
-            #        " service call ",
-            #        "/spawn_model ",
-            #        "example_msgs/srv/ExampleMsg ",
-            #        '"{param_1: True, param_2: 0.0}"',
-            #    ]],
-            #),
+            ExecuteProcess(
+                cmd=[[
+                    FindExecutable(name='ros2'),
+                    " service ",
+                    "call ",
+                    "/spawn_model ",
+                    "flatland_msgs/srv/SpawnModel ",
+                    "\"{yaml_path: '", PathJoinSubstitution([pkg_share, 'robot/turtlebot.model.yaml']), "', name: 'turtlebot0', ns: '', pose: {x: 3.0, y: 7.0, theta: 0.0}}\"",
+                ]],
+                shell=True,
+            ),
 
             # ****** Maps *****
             Node(
@@ -84,7 +83,7 @@ def generate_launch_description():
                 package="nav2_map_server",
                 executable="map_server",
                 parameters=[
-                    {"yaml_filename": PathJoinSubstitution([FindPackageShare("turtlebot_flatland"), "maps/hospital_section.yaml"])},
+                    {"yaml_filename": PathJoinSubstitution([pkg_share, "maps/hospital_section.yaml"])},
                     {"frame_id": global_frame_id},
                 ],
             ),
@@ -112,7 +111,7 @@ def generate_launch_description():
                 executable="rviz2",
                 arguments=[
                     "-d",
-                    PathJoinSubstitution([FindPackageShare("turtlebot_flatland"), "rviz/robot_navigation.rviz"])
+                    PathJoinSubstitution([pkg_share, "rviz/robot_navigation.rviz"])
                 ],
                 condition=conditions.IfCondition(show_viz),
             ),
