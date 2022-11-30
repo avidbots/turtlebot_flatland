@@ -454,8 +454,10 @@ Visualization Manager:
   Name: root
   Tools:
     - Class: rviz_default_plugins/MoveCamera
-    - Class: rviz_default_plugins/Interact
+    - Class: flatland_rviz_plugins/Interact
       Hide Inactive Objects: true
+    - Class: flatland_rviz_plugins/TogglePause
+    - Class: flatland_rviz_plugins/SpawnModel
     - Class: rviz_default_plugins/Select
     - Class: rviz_default_plugins/SetInitialPose
       Topic: /initialpose
