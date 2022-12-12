@@ -458,6 +458,7 @@ Visualization Manager:
       Hide Inactive Objects: true
     - Class: flatland_rviz_plugins/TogglePause
     - Class: flatland_rviz_plugins/SpawnModel
+    - Class: flatland_rviz_plugins/ChangeRate
     - Class: rviz_default_plugins/Select
     - Class: rviz_default_plugins/SetInitialPose
       Topic: /initialpose
