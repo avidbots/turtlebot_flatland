@@ -1,5 +1,5 @@
 Panels:
-  - Class: rviz/Displays
+  - Class: rviz_common/Displays
     Help Height: 78
     Name: Displays
     Property Tree Widget:
@@ -11,31 +11,33 @@ Panels:
         - /Global Planning1
       Splitter Ratio: 0.5
     Tree Height: 595
-  - Class: rviz/Selection
+  - Class: rviz_common/Selection
     Name: Selection
-  - Class: rviz/Tool Properties
+  - Class: rviz_common/Tool Properties
     Expanded:
       - /2D Pose Estimate1
       - /2D Nav Goal1
     Name: Tool Properties
     Splitter Ratio: 0.588679016
-  - Class: rviz/Views
+  - Class: rviz_common/Views
     Expanded:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
-  - Class: rviz/Time
+  - Class: rviz_common/Time
     Experimental: false
     Name: Time
     SyncMode: 0
     SyncSource: LaserScan (kinect)
+  - Class: nav2_rviz_plugins/Navigation 2
+    Name: Navigation 2
 Visualization Manager:
   Class: ""
   Displays:
-    - Alpha: 0.5
+    - Alpha: 0.1
       Cell Size: 1
-      Class: rviz/Grid
-      Color: 160; 160; 164
+      Class: rviz_default_plugins/Grid
+      Color: 224; 224; 224
       Enabled: true
       Line Style:
         Line Width: 0.0299999993
@@ -47,10 +49,10 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 10
+      Plane Cell Count: 100
       Reference Frame: <Fixed Frame>
       Value: true
-    - Class: rviz/TF
+    - Class: rviz_default_plugins/TF
       Enabled: false
       Frame Timeout: 15
       Frames:
@@ -72,7 +74,7 @@ Visualization Manager:
         Value: true
       Axis: Z
       Channel Name: intensity
-      Class: rviz/LaserScan
+      Class: rviz_default_plugins/LaserScan
       Color: 255; 0; 0
       Color Transformer: FlatColor
       Decay Time: 0
@@ -102,7 +104,7 @@ Visualization Manager:
         Value: true
       Axis: Z
       Channel Name: intensity
-      Class: rviz/LaserScan
+      Class: rviz_default_plugins/LaserScan
       Color: 255; 255; 255
       Color Transformer: Intensity
       Decay Time: 0
@@ -125,19 +127,19 @@ Visualization Manager:
       Use rainbow: true
       Value: true
     - Alpha: 0.699999988
-      Class: rviz/Map
+      Class: rviz_default_plugins/Map
       Color Scheme: map
       Draw Behind: false
-      Enabled: false
+      Enabled: true
       Name: Map
       Topic: /map
       Unreliable: false
       Use Timestamp: false
       Value: false
-    - Class: rviz/Group
+    - Class: rviz_common/Group
       Displays:
         - Alpha: 0.699999988
-          Class: rviz/Map
+          Class: rviz_default_plugins/Map
           Color Scheme: costmap
           Draw Behind: false
           Enabled: true
@@ -148,7 +150,7 @@ Visualization Manager:
           Value: true
         - Alpha: 1
           Buffer Length: 1
-          Class: rviz/Path
+          Class: rviz_default_plugins/Path
           Color: 0; 12; 255
           Enabled: true
           Head Diameter: 0.300000012
@@ -177,7 +179,7 @@ Visualization Manager:
             Value: true
           Axis: Z
           Channel Name: goal_cost
-          Class: rviz/PointCloud2
+          Class: rviz_default_plugins/PointCloud2
           Color: 255; 255; 255
           Color Transformer: Intensity
           Decay Time: 0
@@ -207,7 +209,7 @@ Visualization Manager:
             Value: true
           Axis: Z
           Channel Name: total_cost
-          Class: rviz/PointCloud2
+          Class: rviz_default_plugins/PointCloud2
           Color: 255; 255; 255
           Color Transformer: Intensity
           Decay Time: 0
@@ -231,10 +233,10 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: Local Planning
-    - Class: rviz/Group
+    - Class: rviz_common/Group
       Displays:
         - Alpha: 0.400000006
-          Class: rviz/Map
+          Class: rviz_default_plugins/Map
           Color Scheme: costmap
           Draw Behind: true
           Enabled: true
@@ -245,7 +247,7 @@ Visualization Manager:
           Value: true
         - Alpha: 1
           Buffer Length: 1
-          Class: rviz/Path
+          Class: rviz_default_plugins/Path
           Color: 255; 0; 0
           Enabled: true
           Head Diameter: 0.300000012
@@ -271,7 +273,7 @@ Visualization Manager:
     - Alpha: 1
       Axes Length: 1
       Axes Radius: 0.100000001
-      Class: rviz/Pose
+      Class: rviz_default_plugins/Pose
       Color: 255; 25; 0
       Enabled: true
       Head Length: 0.200000003
@@ -287,7 +289,7 @@ Visualization Manager:
       Arrow Length: 0.200000003
       Axes Length: 0.300000012
       Axes Radius: 0.00999999978
-      Class: rviz/PoseArray
+      Class: rviz_default_plugins/PoseArray
       Color: 0; 192; 0
       Enabled: true
       Head Length: 0.0700000003
@@ -301,7 +303,7 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Buffer Length: 1
-      Class: rviz/Path
+      Class: rviz_default_plugins/Path
       Color: 25; 255; 0
       Enabled: true
       Head Diameter: 0.300000012
@@ -323,7 +325,7 @@ Visualization Manager:
       Unreliable: false
       Value: true
     - Angle Tolerance: 0.100000001
-      Class: rviz/Odometry
+      Class: rviz_default_plugins/Odometry
       Covariance:
         Orientation:
           Alpha: 0.5
@@ -356,25 +358,32 @@ Visualization Manager:
       Topic: /odom
       Unreliable: false
       Value: false
-    - Class: rviz/MarkerArray
+    - Class: rviz_default_plugins/MarkerArray
       Enabled: false
-      Marker Topic: /move_base/EBandPlannerROS/eband_visualization_array
+      Topic:
+        Value: /move_base/EBandPlannerROS/eband_visualization_array
       Name: EBand boubles
       Namespaces:
         {}
       Queue Size: 100
       Value: false
-    - Class: rviz/MarkerArray
+    - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/layer/2d
+      Topic:
+        Value: /layers/l_2d
+        Depth: 1
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
       Name: World
       Namespaces:
         "": true
       Queue Size: 100
       Value: true
-    - Class: rviz/MarkerArray
+    - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/model/turtlebot0
+      Topic:
+        Value: /models/m_turtlebot0
       Name: Turtlebot
       Namespaces:
         "": true
@@ -388,7 +397,7 @@ Visualization Manager:
         Value: true
       Axis: Z
       Channel Name: intensity
-      Class: rviz/LaserScan
+      Class: rviz_default_plugins/LaserScan
       Color: 255; 170; 0
       Color Transformer: FlatColor
       Decay Time: 0
@@ -410,30 +419,32 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
-    - Class: rviz/MarkerArray
+    - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/model/table0
-      Name: MarkerArray
+      Topic:
+        Value: /models/m_table0
+      Name: Table
       Namespaces:
         "": true
       Queue Size: 100
       Value: true
-    - Class: rviz/MarkerArray
+    - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/model/door0
-      Name: MarkerArray
+      Topic:
+        Value: /models/m_door0
+      Name: Door
       Namespaces:
         "": true
       Queue Size: 100
       Value: true
-    - Class: rviz/InteractiveMarkers
+    - Class: rviz_default_plugins/InteractiveMarkers
       Enable Transparency: true
       Enabled: true
+      Interactive Markers Namespace: /interactive_model_markers
       Name: InteractiveMarkers
       Show Axes: false
       Show Descriptions: true
       Show Visual Aids: false
-      Update Topic: /interactive_model_markers/update
       Value: true
   Enabled: true
   Global Options:
@@ -442,20 +453,23 @@ Visualization Manager:
     Frame Rate: 30
   Name: root
   Tools:
-    - Class: rviz/MoveCamera
-    - Class: rviz/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: flatland_rviz_plugins/Interact
       Hide Inactive Objects: true
-    - Class: rviz/Select
-    - Class: rviz/SetInitialPose
+    - Class: flatland_rviz_plugins/TogglePause
+    - Class: flatland_rviz_plugins/SpawnModel
+    - Class: flatland_rviz_plugins/ChangeRate
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/SetInitialPose
       Topic: /initialpose
-    - Class: rviz/SetGoal
+    - Class: rviz_default_plugins/SetGoal
       Topic: /move_base_simple/goal
-    - Class: rviz/Measure
+    - Class: rviz_default_plugins/Measure
   Value: true
   Views:
     Current:
       Angle: 0
-      Class: rviz/TopDownOrtho
+      Class: rviz_default_plugins/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
