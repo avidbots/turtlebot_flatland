@@ -56,13 +56,6 @@
       pose: {x: $(arg initial_pose_x), y: $(arg initial_pose_y), theta: $(arg initial_pose_a)}}&quot;"
     />
 
-  <!-- Command Velocity multiplexer -->
-  <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>
-  <node pkg="nodelet" type="nodelet" name="cmd_vel_mux" args="load yocs_cmd_vel_mux/CmdVelMuxNodelet mobile_base_nodelet_manager">
-    <param name="yaml_cfg_file" value="$(find turtlebot_bringup)/param/mux.yaml"/>
-    <remap from="cmd_vel_mux/output" to="cmd_vel"/>
-  </node>
-
   <!-- ****** Maps ***** -->
   <node name="map_server" pkg="map_server" type="map_server" args="$(find turtlebot_flatland)/maps/hospital_section.yaml">
    <param name="frame_id" value="$(arg global_frame_id)"/>
@@ -70,7 +63,7 @@
 
   <!--  ************** Navigation  ***************  -->
 
-  <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml">
+  <include file="$(find turtlebot_flatland)/launch/includes/move_base.launch.xml">
    <arg name="odom_topic" value="$(arg odom_topic)"/>
    <arg name="laser_topic" value="$(arg laser_topic)"/>
    <arg name="odom_frame_id"   value="$(arg odom_frame_id)"/>
@@ -86,7 +79,7 @@
 
 
   <!--  ************** AMCL ************** -->
-  <include file="$(find turtlebot_navigation)/launch/includes/amcl/amcl.launch.xml">
+  <include file="$(find turtlebot_flatland)/launch/includes/amcl/amcl.launch.xml">
     <arg name="scan_topic" value="$(arg laser_topic)"/>
     <arg name="use_map_topic" value="true"/>
     <arg name="odom_frame_id" value="$(arg odom_frame_id)"/>

@@ -62,6 +62,14 @@ plugins:
     odom_frame_id: odom
     odom_pub: odom  # topic odom is published on
     pub_rate: 10
+    angular_dynamics:
+      acceleration_limit: 0.0   # max acceleration (away from 0), in rads/s/s; 0.0 means "no limit"
+      deceleration_limit: 0.0   # max deceleration (towards 0), in rads/s/s; 0.0 means "no limit"; left blank, will default to acceleration_limit value
+      velocity_limit: 0.0       # max absolute velocity in rads/s; 0.0 means "no limit"
+    linear_dynamics:
+      acceleration_limit: 0.0   # max acceleration (away from 0), in m/s/s; 0.0 means "no limit"
+      deceleration_limit: 0.0   # max deceleration (towards 0), in m/s/s; 0.0 means "no limit"; left blank, will default to acceleration_limit value
+      velocity_limit: 0.0       # max absolute velocity in m/s; 0.0 means "no limit"
     # odom_pose_noise: [0.0005,0.0005,0.0001]
     #odom_twist_noise: [0.001,0.001,0.001]
     # odom_pose_covariance: [0.00, 0.01, 0.02, 0.03, 0.04, 0.05, 
