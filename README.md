@@ -4,6 +4,8 @@ This ROS 2 example drives a TurtleBot-sized robot in Flatland with Nav2. The dem
 is currently supported on ROS 2 Lyrical only. Kilted and Rolling are expected to
 work as well, but have not been verified.
 
+[<img width="320" height="240" alt="FlatlandTrailer" src="https://github.com/user-attachments/assets/418f50e4-aa7e-402e-aa83-260e86ab07e9" />](https://youtu.be/NnZE7pkUSM8)
+
 ## Dev container (Lyrical)
 
 With Docker and the VS Code Dev Containers extension installed, open this
