@@ -26,6 +26,9 @@
     "postCreateCommand": "bash .devcontainer/post-create-command.sh",
     "customizations": {
         "vscode": {
+            "settings": {
+                "terminal.integrated.cwd": "/opt/overlay_ws"
+            },
             "extensions": [
                 "althack.ament-task-provider",
                 "eamodio.gitlens",

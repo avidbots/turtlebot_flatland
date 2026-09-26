@@ -1,5 +1,5 @@
 ARG ROS_DISTRO=lyrical
-FROM ros:${ROS_DISTRO}
+FROM ghcr.io/ros-navigation/nav2_docker:lyrical-1.5.2-standard
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG USERNAME=turtlebot

@@ -7,7 +7,7 @@ sudo chown -R "$(id -u):$(id -g)" /opt/overlay_ws/{build,install,log} /tmp/.ccac
 git config --global --add safe.directory /opt/overlay_ws/src/turtlebot_flatland
 
 if [ ! -e /opt/overlay_ws/src/flatland ]; then
-    git clone https://github.com/avidbots/flatland.git /opt/overlay_ws/src/flatland
+    git clone --branch ros2 https://github.com/avidbots/flatland.git /opt/overlay_ws/src/flatland
 fi
 git config --global --add safe.directory /opt/overlay_ws/src/flatland
 
