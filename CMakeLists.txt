@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(turtlebot_flatland)
 
 # Ensure we're using c++11
@@ -20,6 +20,10 @@ install(DIRECTORY maps
 )
 
 install(DIRECTORY robot
+  DESTINATION share/${PROJECT_NAME}/
+)
+
+install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME}/
 )
 

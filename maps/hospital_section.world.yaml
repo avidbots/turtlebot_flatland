@@ -8,9 +8,12 @@ layers:  # Support for arbitrary number of layers
     map: "hospital_section.yaml"  # leading / denotes absolute file path, otherwise relative
     color: [0, 1, 0, 0]  # List of floats [r,g,b,a] to color debug boundary
 models:  
+  - name: turtlebot0
+    pose: [3.0, 7.0, 0.0]
+    model: ../robot/turtlebot.model.yaml
   - name: table0
     pose: [6,12,0]
     model: table.model.yaml
   - name: door0
-    pose: [5.15, 10.0, 0]
+    pose: [5.15, 10.2, 0]
     model: door.model.yaml
