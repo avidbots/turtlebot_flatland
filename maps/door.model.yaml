@@ -25,7 +25,7 @@ plugins:
   - type: Tween
     name: Tween0
     body: base
-    delta: [-1, 0, 0.0]
+    delta: [-1.2, 0, 0.0]
     duration: 1.0
     mode: trigger
     trigger_topic: "door_sensor"

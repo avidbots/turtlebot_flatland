@@ -1,0 +1,37 @@
+{
+    "name": "TurtleBot Flatland (Lyrical)",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "../",
+        "args": { "ROS_DISTRO": "lyrical", "USERNAME": "${localEnv:USER:turtlebot}" }
+    },
+    "remoteUser": "${localEnv:USER:turtlebot}",
+    "updateRemoteUserUID": true,
+    "runArgs": [
+        "--init",
+        "--privileged",
+        "--volume=/dev:/dev",
+        "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+        "--env=DISPLAY=${localEnv:DISPLAY}",
+        "--env=QT_X11_NO_MITSHM=1"
+    ],
+    "workspaceFolder": "/opt/overlay_ws/src/turtlebot_flatland",
+    "workspaceMount": "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind",
+    "mounts": [
+        { "source": "overlay-${devcontainerId}", "target": "/opt/overlay_ws", "type": "volume" },
+        { "source": "ccache-${devcontainerId}", "target": "/tmp/.ccache", "type": "volume" }
+    ],
+    "remoteEnv": { "CCACHE_DIR": "/tmp/.ccache" },
+    "onCreateCommand": "bash .devcontainer/on-create-command.sh",
+    "postCreateCommand": "bash .devcontainer/post-create-command.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "althack.ament-task-provider",
+                "eamodio.gitlens",
+                "ms-iot.vscode-ros",
+                "twxs.cmake"
+            ]
+        }
+    }
+}

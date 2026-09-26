@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package>
+<package format="3">
   <name>turtlebot_flatland</name>
   <version>0.0.0</version>
   <description>
@@ -10,13 +10,15 @@
   <author email="mehdi.tlili@gmail.com">Joseph Duchesne</author>
   <license>BSD</license>
 
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <buildtool_depend>catkin</buildtool_depend>
-  <run_depend>flatland_msgs</run_depend>
-  <run_depend>flatland_plugins</run_depend>
-  <run_depend>navigation</run_depend>
-  <run_depend>turtlebot_bringup</run_depend>
-  <run_depend>turtlebot_navigation</run_depend>
-  <run_depend>yocs_virtual_sensor</run_depend>
-  <run_depend>yocs_velocity_smoother</run_depend>
+  <exec_depend>flatland_server</exec_depend>
+  <exec_depend>flatland_plugins</exec_depend>
+  <exec_depend>nav2_bringup</exec_depend>
+  <exec_depend>nav2_common</exec_depend>
+  <exec_depend>twist_mux</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
+  <export><build_type>ament_cmake</build_type></export>
 </package>

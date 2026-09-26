@@ -4,13 +4,13 @@ layers:  # Support for arbitrary number of layers
   - name: "2d"  # layer 0 named "2d"
     map: "hospital_section.yaml"  # leading / denotes absolute file path, otherwise relative
     color: [0, 1, 0, 1]  # List of floats [r,g,b,a] to color debug boundary
-  - name: "3d"  # The 2d layer is duplicated into the 3d layer so that 3D sensors can see it
+  - name: "3d"
     map: "hospital_section.yaml"  # leading / denotes absolute file path, otherwise relative
     color: [0, 1, 0, 0]  # List of floats [r,g,b,a] to color debug boundary
-models:  
+models:
   - name: turtlebot0
     pose: [3.0, 7.0, 0.0]
-    model: ../robot/turtlebot.model.yaml
+    model: ../robot/turtlebot_with_trailer.model.yaml
   - name: table0
     pose: [6,12,0]
     model: table.model.yaml
