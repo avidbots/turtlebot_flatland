@@ -54,6 +54,38 @@ bodies:  # List of named bodies
         center: [0, 0]
         density: 1
         layers: ["2d", "robot"]  # Keep the door detector without colliding with 3D obstacles
+  # Feel free to comment out or remove the trailer if not needed
+  - name: trailer
+    pose: [-0.6052, 0, 0]
+    type: dynamic
+    color: [0.85, 0.55, 0.15, 1]
+    footprints:
+      - type: polygon  # Trailer main body
+        points: [[-0.15, -0.15], [0.15, -0.15], [0.15, 0.15], [-0.15, 0.15]]
+        density: 1
+        layers: ["3d"]
+      - type: polygon  # Trailer hitch
+        points: [[0.15, -0.15], [0.35, 0], [0.15, 0.15]]
+        density: 1
+        layers: ["2d"]
+  - name: trailer_left_wheel
+    pose: [-0.6852, 0.18, 0]
+    type: dynamic
+    color: [0.1, 0.1, 0.1, 1]
+    footprints:
+      - type: polygon
+        points: [[-0.06, -0.025], [0.06, -0.025], [0.06, 0.025], [-0.06, 0.025]]
+        density: 1
+        layers: ["2d"]
+  - name: trailer_right_wheel
+    pose: [-0.6852, -0.18, 0]
+    type: dynamic
+    color: [0.1, 0.1, 0.1, 1]
+    footprints:
+      - type: polygon
+        points: [[-0.06, -0.025], [0.06, -0.025], [0.06, 0.025], [-0.06, 0.025]]
+        density: 1
+        layers: ["2d"]
 
 joints:
   - type: weld
@@ -84,6 +116,28 @@ joints:
         anchor: [0, 0]
       - name: base
         anchor: [0, 0]
+  - type: revolute
+    name: trailer_hitch
+    limits: [-0.7854, 0.7854]  # +/- 45 degrees
+    bodies:
+      - name: base
+        anchor: [-0.2552, 0]
+      - name: trailer
+        anchor: [0.35, 0]
+  - type: weld
+    name: trailer_left_wheel_weld
+    bodies:
+      - name: trailer
+        anchor: [-0.08, 0.18]
+      - name: trailer_left_wheel
+        anchor: [0, 0]
+  - type: weld
+    name: trailer_right_wheel_weld
+    bodies:
+      - name: trailer
+        anchor: [-0.08, -0.18]
+      - name: trailer_right_wheel
+        anchor: [0, 0]
 
 plugins:
   - type: DiffDrive 
@@ -105,6 +159,20 @@ plugins:
       acceleration_limit: 3.0   # max acceleration (away from 0), in rads/s/s; 0.0 means "no limit"
       deceleration_limit: 3.0   # max deceleration (towards 0), in rads/s/s; 0.0 means "no limit"; left blank, will default to acceleration_limit value
       velocity_limit: 2.0       # max absolute velocity in rads/s; 0.0 means "no limit"
+  - type: FreeWheel
+    name: trailer_left_free_wheel
+    body: trailer_left_wheel
+    offset: [0, 0, 0]
+    radius: 0.05
+    lateral_resistance: 1.0
+    encoder_topic: trailer/left_wheel/rad_s
+  - type: FreeWheel
+    name: trailer_right_free_wheel
+    body: trailer_right_wheel
+    offset: [0, 0, 0]
+    radius: 0.05
+    lateral_resistance: 1.0
+    encoder_topic: trailer/right_wheel/rad_s
   - type: Laser
     name: laser_front
     frame: laser_mount

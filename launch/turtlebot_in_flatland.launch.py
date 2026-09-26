@@ -5,7 +5,7 @@ from launch.actions import (
     SetEnvironmentVariable,
 )
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import IfElseSubstitution, LaunchConfiguration, PathJoinSubstitution
 from launch.conditions import IfCondition
 from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
@@ -76,9 +76,14 @@ def generate_launch_description():
     return LaunchDescription(
         [
             SetEnvironmentVariable("FASTDDS_BUILTIN_TRANSPORTS", "UDPv4"),
+            DeclareLaunchArgument(name="trailer", default_value="false"),
             DeclareLaunchArgument(
                 name="world_path",
-                default_value=PathJoinSubstitution([pkg_share, "maps/hospital_section.world.yaml"]),
+                default_value=IfElseSubstitution(
+                    LaunchConfiguration("trailer"),
+                    PathJoinSubstitution([pkg_share, "maps", "hospital_section_with_trailer.world.yaml"]),
+                    PathJoinSubstitution([pkg_share, "maps", "hospital_section.world.yaml"]),
+                ),
             ),
             DeclareLaunchArgument(name="update_rate", default_value="100.0"),
             DeclareLaunchArgument(name="step_size", default_value="0.01"),
